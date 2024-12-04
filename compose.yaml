@@ -11,7 +11,6 @@ services:
       - ./data:/srv/gameserver/data/vs
     environment:
       - TZ=Europe/London  # Set to your timezone
-      - VERSION=1.19.5    # Game version - works with release candidates too.
+      - VERSION=1.20.0-rc.1   # Game version - works with release candidates (unstable) as well as regular releases (stable)
     stdin_open: true
     tty: true
-    

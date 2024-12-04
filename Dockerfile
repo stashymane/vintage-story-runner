@@ -39,9 +39,11 @@ if [ ! -f VintagestoryServer.dll ]; then\n\
         \n\
         # Check latest stable version\n\
         STABLE_JSON=$(wget -qO- https://api.vintagestory.at/stable.json)\n\
-        LATEST_STABLE=$(echo "$STABLE_JSON" | jq -r "keys_unsorted | sort_by( split(\".\") | map(tonumber) ) | last")\n\
+        LATEST_STABLE=$(echo "$UNSTABLE_JSON" | jq -r 'keys_unsorted[0]')\n\
         if [ "$VERSION" != "$LATEST_STABLE" ]; then\n\
             echo "NOTE: You are running stable version ${VERSION} but version ${LATEST_STABLE} is available"\n\
+        else\n\
+            echo "NOTE: Version ${VERSION} is the latest stable version!"\n\
         fi\n\
     elif wget --spider -q "$UNSTABLE_URL" 2>/dev/null; then\n\
         DOWNLOAD_URL="$UNSTABLE_URL"\n\
@@ -49,9 +51,11 @@ if [ ! -f VintagestoryServer.dll ]; then\n\
         \n\
         # Check latest unstable version\n\
         UNSTABLE_JSON=$(wget -qO- https://api.vintagestory.at/unstable.json)\n\
-        LATEST_UNSTABLE=$(echo "$UNSTABLE_JSON" | jq -r "keys_unsorted | sort_by( split(\".\") | map(tonumber) ) | last")\n\
+        LATEST_UNSTABLE=$(echo "$UNSTABLE_JSON" | jq -r 'keys_unsorted[0]')\n\
         if [ "$VERSION" != "$LATEST_UNSTABLE" ]; then\n\
-            echo "NOTE: You are running unstable version ${VERSION} but version ${LATEST_UNSTABLE} is available"\n\
+            echo "NOTE: You are running unstable version ${VERSION} but version ${LATEST_UNSTABLE} is available!"\n\
+        else\n\
+            echo "NOTE: Version ${VERSION} is the latest unstable version!"\n\
         fi\n\
     else\n\
         echo "ERROR: Version ${VERSION} not found in either stable or unstable channels"\n\
