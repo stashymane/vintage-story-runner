@@ -1,0 +1,17 @@
+services:
+  vintage-story:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: vs-server
+    restart: unless-stopped
+    ports:
+      - "42420:42420"
+    volumes:
+      - ./data:/srv/gameserver/data/vs
+    environment:
+      - TZ=Europe/London  # Set to your timezone
+      - VERSION=1.19.5    # Game version - works with release candidates too.
+    stdin_open: true
+    tty: true
+    
