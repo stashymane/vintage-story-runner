@@ -55,8 +55,6 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: quartzar/vintage-story-server
+          subject-name: index.docker.io/quartzar/vintage-story-server
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
-          registry-username: ${{ secrets.DOCKER_USERNAME }}
-          registry-password: ${{ secrets.DOCKER_PASSWORD }}
