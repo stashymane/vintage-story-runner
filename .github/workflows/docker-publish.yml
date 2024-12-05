@@ -58,3 +58,5 @@ jobs:
           subject-name: quartzar/vintage-story-server
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+          registry-username: ${{ secrets.DOCKER_USERNAME }}
+          registry-password: ${{ secrets.DOCKER_PASSWORD }}
