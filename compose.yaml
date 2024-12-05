@@ -1,5 +1,6 @@
 services:
   vintage-story:
+    image: vintage-story:local
     build: 
       context: .
       dockerfile: Dockerfile
