@@ -9,3 +9,7 @@ data/Saves
 data/WorldEdit
 data/serverconfig.json
 data/servermagicnumbers.json
+
+production
+
+.vscode
