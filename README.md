@@ -57,6 +57,7 @@ To stop the container, just run `docker compose down` in the `vintage-story-serv
 
 > [!WARNING]
 > **Do not run the server without the `data` directory already created!** 
+>
 > This is required as otherwise the server will create one for you with admin/root permissions!
 
 #### Extra Tips
