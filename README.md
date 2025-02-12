@@ -22,6 +22,8 @@ services:
 
     environment:
       VERSION: "1.20.3" # any game version
+      PUID: "1000" # puid & pgid should match the user id that owns the data directory, usually 1000
+      PGID: "1000" # run the `id` command if not sure
 
     volumes:
       - "./data:/data" # [host directory]:[container directory]
