@@ -2,7 +2,6 @@ target "docker-metadata-action" {}
 
 target "vintage-story-server" {
   inherits = ["docker-metadata-action"]
-  tags = ["vintage-story-server:dev"]
 
   dockerfile = "Dockerfile"
   context = "."
