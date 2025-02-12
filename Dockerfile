@@ -1,9 +1,7 @@
 FROM mcr.microsoft.com/dotnet/runtime:7.0
 
-
 ENV STABLE_URL="https://cdn.vintagestory.at/gamefiles/stable/vs_server_linux-x64_"
 ENV UNSTABLE_URL="https://cdn.vintagestory.at/gamefiles/unstable/vs_server_linux-x64_"
-
 
 # Install required packages
 RUN apt-get update && apt-get install -y \
@@ -17,8 +15,8 @@ RUN useradd -u 1000 -m -s /bin/bash gameserver
 RUN mkdir -p /srv/gameserver/vintagestory \
     /srv/gameserver/data/vs
 
-# Set ownership 
-RUN chown -R gameserver:gameserver /srv/gameserver 
+# Set ownership
+RUN chown -R gameserver:gameserver /srv/gameserver
 
 WORKDIR /srv/gameserver/vintagestory
 

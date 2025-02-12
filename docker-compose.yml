@@ -1,0 +1,10 @@
+services:
+  vintage-story:
+    image: vintage-story-server:${GITHUB_REF_NAME:-dev}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      cache_from:
+        - "type=gha"
+      cache_to:
+        - "type=gha"
