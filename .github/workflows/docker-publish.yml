@@ -8,7 +8,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${REGISTRY}/${{ github.repository }}
 
 jobs:
   build:
@@ -40,4 +40,6 @@ jobs:
         with:
           push: true
           files: |
-            docker-compose.yml
+            docker-bake.hcl
+          set: |
+            ${{ env.PUSH_LATEST == 'true' && '*.tags=${IMAGE_NAME}:latest' || '' }}
