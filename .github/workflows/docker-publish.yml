@@ -35,7 +35,7 @@ jobs:
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
-            type=raw,value=latest,enable=${PUSH_LATEST}
+            type=raw,value=latest,enable=${{ env.PUSH_LATEST }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
