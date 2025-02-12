@@ -31,4 +31,4 @@ else
     fi
 fi
 
-exec dotnet VintagestoryServer.dll --dataPath /srv/gameserver/data/vs
+exec dotnet VintagestoryServer.dll --dataPath /data
