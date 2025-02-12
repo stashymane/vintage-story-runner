@@ -14,6 +14,7 @@ VOLUME /data
 WORKDIR /game
 
 # Copy scripts into the container
+COPY scripts/prepare.sh /game
 COPY scripts/download_server.sh /game
 COPY scripts/check_and_start.sh /game
 
@@ -22,4 +23,4 @@ RUN chmod +x /game/*.sh
 
 EXPOSE 42420
 
-ENTRYPOINT ["/game/check_and_start.sh"]
+ENTRYPOINT ["/game/prepare.sh"]
