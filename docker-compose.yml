@@ -1,0 +1,13 @@
+services:
+  vintage-story-server:
+    image: vintage-story-server:dev
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    environment:
+      VERSION: "1.20.3"
+    ports: ["42420:42420"]
+    stdin_open: true
+    tty: true
