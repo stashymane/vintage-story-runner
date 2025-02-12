@@ -1,6 +1,6 @@
 services:
   vintage-story:
-    image: ghcr.io/${IMAGE_NAME:-vintage-story-server}:${GITHUB_REF_NAME:-dev}
+    image: ghcr.io/${IMAGE_NAME:-vintage-story-server}:${GITHUB_REF_NAME:-dev}${PUSH_LATEST:+,ghcr.io/${IMAGE_NAME:-vintage-story-server}:latest}
     build:
       context: .
       dockerfile: Dockerfile
