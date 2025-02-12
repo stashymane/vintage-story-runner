@@ -6,13 +6,13 @@ variable "GITHUB_REF_NAME" {
   default = "dev"
 }
 
+target "docker-metadata-action" {}
+
 target "vintage-story-server" {
+  inherits = ["docker-metadata-action"]
+
   dockerfile = "Dockerfile"
   context = "."
-
-  tags = [
-    "${IMAGE_NAME}:${GITHUB_REF_NAME}"
-  ]
 
   platforms = [
     "linux/amd64",

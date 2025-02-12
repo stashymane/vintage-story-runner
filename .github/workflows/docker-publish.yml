@@ -21,6 +21,22 @@ jobs:
         run: echo "PUSH_LATEST=true" >> $GITHUB_ENV
         if: startsWith(github.ref, 'refs/tags/v')
 
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            ${IMAGE_NAME}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest,enable=${PUSH_LATEST}
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -40,5 +56,3 @@ jobs:
           push: true
           files: |
             docker-bake.hcl
-          set: |
-            ${{ env.PUSH_LATEST == 'true' && '*.tags=${IMAGE_NAME}:latest' || '' }}
