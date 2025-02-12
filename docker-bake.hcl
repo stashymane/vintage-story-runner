@@ -1,11 +1,3 @@
-variable "IMAGE_NAME" {
-  default = "vintage-story-server"
-}
-
-variable "GITHUB_REF_NAME" {
-  default = "dev"
-}
-
 target "docker-metadata-action" {}
 
 target "vintage-story-server" {
