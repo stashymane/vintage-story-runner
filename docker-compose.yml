@@ -8,6 +8,8 @@ services:
 
     environment:
       VERSION: "1.20.3"
+    volumes:
+      - "./data:/data"
     ports: ["42420:42420"]
     stdin_open: true
     tty: true

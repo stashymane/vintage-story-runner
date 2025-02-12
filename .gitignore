@@ -1,15 +1,2 @@
-data/Backups
-data/BackupSaves
-data/Cache
-data/Logs
-data/Macros
-data/Mods
-data/Playerdata
-data/Saves
-data/WorldEdit
-data/serverconfig.json
-data/servermagicnumbers.json
-
-production
-
 .vscode
+data/
