@@ -14,10 +14,11 @@ ARG TARGETARCH
 VOLUME /data
 EXPOSE 42420
 
-RUN mkdir /game
+RUN mkdir /game;\
+    chmod 777 /game
 WORKDIR /game
 
-COPY --from=builder /game/bootstrapper /game/bootstrapper
-RUN chmod +x /game/bootstrapper
+COPY --from=builder /bootstrapper /bootstrapper
+RUN chmod +x /bootstrapper
 
-CMD ["/game/bootstrapper"]
+CMD ["/bootstrapper"]
