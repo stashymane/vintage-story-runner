@@ -13,7 +13,7 @@ Downloads Vintage Story & runs it in a container. Supports both `x64` and `arm64
 ```yaml
 services:
   vintage-story-server:
-    image: vintage-story-server:latest
+    image: stashymane/vintage-story-runner:latest
     container_name: vs-server
 
     environment:
