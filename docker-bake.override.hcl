@@ -1,5 +1,5 @@
 target "vintage-story-server" {
-  tags = ["vintage-story-server:dev"]
+  tags = ["stashymane/vintage-story-runner:dev"]
 
   platforms = []
 }
