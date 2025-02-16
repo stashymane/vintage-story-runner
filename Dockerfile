@@ -8,12 +8,12 @@ RUN mkdir /game; \
     chmod +x /setup.sh; \
     /setup.sh
 
-FROM mcr.microsoft.com/dotnet/runtime:7.0
+FROM alpine:3.19
 ARG TARGETARCH
 
-RUN mkdir /game
 VOLUME /data
-
+RUN mkdir /game; \
+    apk add --no-cache tar dotnet7-runtime
 WORKDIR /game
 
 COPY scripts/prepare.sh /game/
