@@ -33,7 +33,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build with Gradle
-        run: ./gradlew assemble
+        run: ./gradlew linkReleaseExecutableLinuxArm64 linkReleaseExecutableLinuxX64
 
   package:
     name: Publish Docker image
