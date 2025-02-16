@@ -14,12 +14,11 @@ Downloads Vintage Story & runs it in a container. Supports both `x64` and `arm64
 services:
   vintage-story-server:
     image: stashymane/vintage-story-runner:latest
+    user: 1000:1000 # set user/group to your local uid/gid for file permissions
     container_name: vs-server
 
     environment:
       VERSION: "1.20.4" # any game version
-      PUID: "1000" # puid & pgid should match the user id that owns the data directory, usually 1000
-      PGID: "1000" # run the `id` command if not sure
 
     volumes:
       - "./data:/data" # [host directory]:[container directory]

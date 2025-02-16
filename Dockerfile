@@ -16,11 +16,10 @@ RUN mkdir /game; \
     apk add --no-cache tar dotnet7-runtime
 WORKDIR /game
 
-COPY scripts/prepare.sh /game/
 COPY --from=builder /game/bootstrapper /game/bootstrapper
 
-RUN chmod +x /game/*.sh /game/bootstrapper
+RUN chmod +x /game/bootstrapper
 
 EXPOSE 42420
 
-ENTRYPOINT ["/game/prepare.sh"]
+ENTRYPOINT ["/game/bootstrapper"]
