@@ -33,12 +33,10 @@ suspend fun fetchVersions(
 suspend fun downloadTarget(target: PlatformInfo): Path {
     val url = target.urls.cdn ?: target.urls.local ?: throw NullPointerException("Failed to find download URL")
 
-    val tempPath = Path(config.tempPath, target.filename)
-    if (SystemFileSystem.exists(tempPath)) SystemFileSystem.delete(tempPath)
+    val tempFilePath = Path(config.tempPath, target.filename)
+    if (SystemFileSystem.exists(tempFilePath)) SystemFileSystem.delete(tempFilePath)
 
-    SystemFileSystem.createDirectories(config.tempPath)
+    httpClient.saveFile(url, tempFilePath)
 
-    httpClient.saveFile(url, tempPath)
-
-    return tempPath
+    return tempFilePath
 }
