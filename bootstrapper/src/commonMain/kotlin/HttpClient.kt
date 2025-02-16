@@ -9,7 +9,9 @@ import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 import kotlinx.serialization.json.Json
 
-val httpClient = HttpClient {
+expect val httpClient: HttpClient
+
+fun HttpClientConfig<*>.setup() {
     install(Resources)
     install(ContentNegotiation) {
         json(Json { ignoreUnknownKeys = true })
