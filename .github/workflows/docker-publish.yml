@@ -28,14 +28,12 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          cache-disabled: true
 
       - name: Fix Gradle permissions
         run: chmod +x ./gradlew
 
       - name: Build with Gradle
-        run: ./gradlew linkReleaseExecutableLinuxArm64 linkReleaseExecutableLinuxX64
+        run: ./gradlew assemble
 
   package:
     name: Publish Docker image

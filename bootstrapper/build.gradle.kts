@@ -9,11 +9,13 @@ version = "1.0-SNAPSHOT"
 kotlin {
     jvm()
 
-    listOf(
+    val nativeTargets = listOf(
         mingwX64(),
         linuxX64(),
         linuxArm64()
-    ).forEach {
+    )
+
+    nativeTargets.forEach {
         it.binaries {
             executable {
                 entryPoint = "main"
@@ -22,10 +24,12 @@ kotlin {
     }
 
 
+
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.coroutines)
+            implementation(libs.kotlinx.io)
             implementation(libs.bundles.ktor)
             implementation(libs.kotlin.logging)
         }
