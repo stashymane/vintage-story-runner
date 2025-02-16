@@ -1,17 +1,10 @@
 import data.PlatformInfo
+import data.VersionInfo
 import data.Versions
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
-import kotlinx.serialization.Serializable
-
-@Serializable
-data class VersionInfo(
-    val latestVersion: String,
-    val version: String,
-    val target: PlatformInfo
-)
 
 suspend fun fetchVersions(
     url: String,
