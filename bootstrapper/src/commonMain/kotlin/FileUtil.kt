@@ -17,6 +17,7 @@ suspend fun setupGameFiles(version: String, platform: PlatformInfo) {
     logger.info { "Game files downloaded, unpacking..." }
 
     if (SystemFileSystem.exists(config.gamePath)) SystemFileSystem.delete(config.gamePath)
+    SystemFileSystem.createDirectories(config.gamePath)
 
     tempPath.untarTo(config.gamePath)
     SystemFileSystem.delete(tempPath)

@@ -1,4 +1,4 @@
-rootProject.name = "vintagestorybootstrap"
+rootProject.name = "bootstrapper"
 
 pluginManagement {
     repositories {
