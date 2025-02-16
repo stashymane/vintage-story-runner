@@ -1,4 +1,4 @@
-FROM alpine:latest AS builder
+FROM --platform=$BUILDPLATFORM alpine:latest AS builder
 ARG TARGETARCH
 ENV BUILDPATH=/bootstrapper
 
