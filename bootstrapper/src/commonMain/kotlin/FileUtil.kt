@@ -44,17 +44,15 @@ fun FileSystem.deleteRecursively(path: Path, mustExist: Boolean = true, suppress
         }
         delete(path, mustExist)
     }
-    if (!suppressExceptions) result.getOrThrow() else result.exceptionOrNull()?.let { logger.warn(it) { "Failed to delete $path" } }
+    if (!suppressExceptions) result.getOrThrow()
+    else result.exceptionOrNull()?.let { logger.warn(it) { "Failed to delete $path" } }
 }
 
 fun FileSystem.clearDirectory(path: Path, mustExist: Boolean = true, suppressExceptions: Boolean = false) {
     if (!exists(path)) return
 
     println(list(path).joinToString(", ", transform = Path::toString))
-    val result = runCatching {
-        list(path).forEach {
-            deleteRecursively(it, false, suppressExceptions)
-        }
+    list(path).forEach {
+        deleteRecursively(it, false, suppressExceptions)
     }
-    if (!suppressExceptions) result.getOrThrow() else result.exceptionOrNull()?.let { logger.warn(it) { "Failed to delete $path" } }
 }
