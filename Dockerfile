@@ -11,15 +11,13 @@ RUN mkdir /game; \
 FROM mcr.microsoft.com/dotnet/runtime:7.0
 ARG TARGETARCH
 
-RUN mkdir /game
 VOLUME /data
+EXPOSE 42420
 
+RUN mkdir /game
 WORKDIR /game
 
 COPY --from=builder /game/bootstrapper /game/bootstrapper
-
 RUN chmod +x /game/bootstrapper
-
-EXPOSE 42420
 
 CMD ["/game/bootstrapper"]
