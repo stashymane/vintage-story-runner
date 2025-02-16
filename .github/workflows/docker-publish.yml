@@ -35,6 +35,12 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew linkReleaseExecutableLinuxArm64 linkReleaseExecutableLinuxX64
 
+      - name: Upload binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: bootstrapper
+          path: './build/bin/'
+
   package:
     name: Publish Docker image
     runs-on: ubuntu-latest
@@ -50,6 +56,12 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Download File
+        uses: actions/download-artifact@v4
+        with:
+          name: bootstrapper
+          path: ./bootstrapper/build/bin/
 
       - name: Docker meta
         id: meta
