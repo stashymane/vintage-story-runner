@@ -11,4 +11,4 @@ case "$TARGETARCH" in
     ;;
 esac
 
-cp "$SRC" /bootstrapper
+cp "$SRC" /app/bootstrapper
