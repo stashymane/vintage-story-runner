@@ -1,9 +1,14 @@
+FROM alpine:latest AS builder
+ARG TARGETARCH
+ENV BUILDPATH=/bootstrapper
+
+COPY bootstrapper/build/bin $BUILDPATH
+COPY ./scripts/setup-bootstrapper.sh /setup.sh
+RUN /setup.sh
+
 FROM mcr.microsoft.com/dotnet/runtime:7.0
+ARG TARGETARCH
 
-ENV STABLE_URL="https://cdn.vintagestory.at/gamefiles/stable/vs_server_linux-x64_"
-ENV UNSTABLE_URL="https://cdn.vintagestory.at/gamefiles/unstable/vs_server_linux-x64_"
-
-# Install required packages
 RUN apt-get update && apt-get install -y \
     wget jq \
     && rm -rf /var/lib/apt/lists/*
@@ -13,12 +18,9 @@ VOLUME /data
 
 WORKDIR /game
 
-# Copy scripts into the container
 COPY scripts/prepare.sh /game
-COPY scripts/download_server.sh /game
-COPY scripts/check_and_start.sh /game
+COPY --from=builder /game/bootstraper /game/bootstrapper
 
-# Make scripts executable and set ownership
 RUN chmod +x /game/*.sh
 
 EXPOSE 42420
