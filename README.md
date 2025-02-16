@@ -1,17 +1,13 @@
-# Vintage Story Dedicated Server (fork)
-> This fork introduces `arm64` target support and simplifies configuration.
+# Vintage Story Runner
+Downloads Vintage Story & runs it in a container. Supports both `x64` and `arm64` platforms.
 
 ### Requirements
-- Docker - https://docs.docker.com/get-docker/
-
 - A PC to host the server from (can be the same one you play on). Official hardware requirements:
   - **OS**: Windows or Linux
   - **CPU**: 4 Threads recommended. Frequency: 1GHz base + 100MHz per player
   - **RAM**: 1GB base + 300MB per player
 
-## Usage / Setup
-
-### Quick Start
+## Usage
 
 `docker-compose.yml`
 ```yaml
