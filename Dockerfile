@@ -22,4 +22,4 @@ RUN chmod +x /game/bootstrapper
 
 EXPOSE 42420
 
-ENTRYPOINT ["/game/bootstrapper"]
+CMD ["/game/bootstrapper"]
