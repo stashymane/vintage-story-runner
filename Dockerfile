@@ -19,7 +19,7 @@ WORKDIR /game
 COPY scripts/prepare.sh /game/
 COPY --from=builder /game/bootstrapper /game/bootstrapper
 
-RUN chmod +x /game/*.sh
+RUN chmod +x /game/*.sh /game/bootstrapper
 
 EXPOSE 42420
 
