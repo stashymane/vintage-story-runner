@@ -18,19 +18,22 @@ object LinuxArmNativePlatform : NativePlatform {
         val release = fetchArmRelease(config.armVersion)
 
         val asset = release.assets.first()
-        val tempPath = Path(config.tempPath, asset.name)
+        val tempFilePath = Path(config.tempPath, asset.name)
 
-        httpClient.saveFile(asset.downloadUrl, tempPath)
+        httpClient.saveFile(asset.downloadUrl, tempFilePath)
 
         overriddenPaths.map { Path(config.gamePath, it) }
             .filter(SystemFileSystem::exists)
-            .forEach(SystemFileSystem::delete)
+            .forEach {
+                if (SystemFileSystem.isDirectory(it)) SystemFileSystem.deleteRecursively(it)
+                else SystemFileSystem.delete(it)
+            }
 
-        tempPath.untarTo(config.gamePath)
+        tempFilePath.untarTo(config.gamePath)
 
-        SystemFileSystem.delete(tempPath)
+        SystemFileSystem.delete(tempFilePath)
     }
-    
+
     override fun run() = linuxRun()
 }
 

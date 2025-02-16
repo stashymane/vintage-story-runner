@@ -37,7 +37,7 @@ suspend fun setupGameFiles(version: String, platform: PlatformInfo) {
 
 fun FileSystem.deleteRecursively(path: Path, mustExist: Boolean = true, suppressExceptions: Boolean = false) {
     val result = runCatching {
-        if (metadataOrNull(path)?.isDirectory == true) {
+        if (isDirectory(path) == true) {
             list(path).forEach {
                 deleteRecursively(it, false, suppressExceptions)
             }
@@ -56,3 +56,5 @@ fun FileSystem.clearDirectory(path: Path, mustExist: Boolean = true, suppressExc
         deleteRecursively(it, false, suppressExceptions)
     }
 }
+
+fun FileSystem.isDirectory(path: Path) = metadataOrNull(path)?.isDirectory == true
