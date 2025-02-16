@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bootstrapper
-          path: './build/bin/'
+          path: './bootstrapper/build/bin/'
 
   package:
     name: Publish Docker image
