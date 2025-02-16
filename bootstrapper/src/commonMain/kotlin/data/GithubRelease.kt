@@ -17,8 +17,5 @@ data class GithubRelease(
         @SerialName("browser_download_url") val downloadUrl: String,
         val id: Int,
         val name: String,
-        val label: String,
-        val state: String,
-        @SerialName("content_type") val contentType: String
     )
 }
