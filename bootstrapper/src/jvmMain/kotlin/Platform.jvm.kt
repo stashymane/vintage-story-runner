@@ -7,6 +7,6 @@ object JvmNativePlatform : NativePlatform {
 
 actual fun NativePlatform.Companion.get(): NativePlatform = JvmNativePlatform
 
-actual fun Path.untarTo(destination: Path) {
+actual fun Path.untarTo(destination: Path, skipIfExists: Boolean) {
     TODO("Not yet implemented")
 }

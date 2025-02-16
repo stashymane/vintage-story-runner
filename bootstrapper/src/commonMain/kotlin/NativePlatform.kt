@@ -14,4 +14,4 @@ interface NativePlatform {
 
 expect fun NativePlatform.Companion.get(): NativePlatform
 
-expect fun Path.untarTo(destination: Path)
+expect fun Path.untarTo(destination: Path, skipIfExists: Boolean = false)

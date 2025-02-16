@@ -9,6 +9,6 @@ object WindowsNativePlatform : NativePlatform {
 
 actual fun NativePlatform.Companion.get(): NativePlatform = WindowsNativePlatform
 
-actual fun Path.untarTo(destination: Path) {
+actual fun Path.untarTo(destination: Path, skipIfExists: Boolean) {
     TODO("Not yet implemented")
 }

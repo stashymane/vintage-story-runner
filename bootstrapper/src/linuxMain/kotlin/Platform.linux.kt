@@ -9,9 +9,9 @@ import platform.posix.exit
 import platform.posix.perror
 import platform.posix.system
 
-actual fun Path.untarTo(destination: Path) {
+actual fun Path.untarTo(destination: Path, skipIfExists: Boolean) {
     SystemFileSystem.createDirectories(destination)
-    val result = system("tar -xzf $this -C $destination")
+    val result = system("tar -xzf $this -C $destination ${if (skipIfExists) "--skip-old-files" else ""}")
     if (result != 0) throw RuntimeException("`tar` returned non-zero result $result")
 }
 
