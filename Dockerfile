@@ -1,6 +1,6 @@
 FROM alpine:latest AS builder
 ARG TARGETARCH
-ENV BUILDPATH=./bootstrapper
+ENV BUILDPATH=/bootstrapper
 
 COPY bootstrapper/build/bin $BUILDPATH
 COPY ./scripts/setup-bootstrapper.sh /setup.sh
@@ -19,7 +19,7 @@ VOLUME /data
 WORKDIR /game
 
 COPY scripts/prepare.sh /game
-COPY --from=builder /game/bootstraper /game/bootstrapper
+COPY --from=builder /game/bootstrapper /game/bootstrapper
 
 RUN chmod +x /game/*.sh
 
