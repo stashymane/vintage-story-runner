@@ -1,6 +1,6 @@
 FROM alpine:latest AS builder
 ARG TARGETARCH
-ENV BUILDPATH=/bootstrapper
+ENV BUILDPATH=./bootstrapper
 
 COPY bootstrapper/build/bin $BUILDPATH
 COPY ./scripts/setup-bootstrapper.sh /setup.sh
