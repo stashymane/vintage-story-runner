@@ -63,6 +63,12 @@ jobs:
           name: bootstrapper
           path: ./bootstrapper/build/bin/
 
+      - name: test
+        run: |
+          ls -la ./ \
+          echo "bin:" \
+          ls -la ./bootstrapper/build/bin/ \
+
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
