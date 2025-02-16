@@ -66,7 +66,6 @@ jobs:
       - name: test
         run: |
           ls -la ./ \
-          echo "bin:" \
           ls -la ./bootstrapper/build/bin/ \
 
       - name: Docker meta
