@@ -9,8 +9,10 @@ version = "1.0-SNAPSHOT"
 kotlin {
     jvm()
 
-    val nativeTargets = listOf(
-        mingwX64(), linuxX64(), linuxArm64()
+    listOf(
+        mingwX64(),
+        linuxX64(),
+        linuxArm64()
     ).forEach {
         it.binaries {
             executable {

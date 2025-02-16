@@ -30,6 +30,8 @@ object LinuxArmNativePlatform : NativePlatform {
 
         SystemFileSystem.delete(tempPath)
     }
+    
+    override fun run() = linuxRun()
 }
 
 actual fun NativePlatform.Companion.get(): NativePlatform = LinuxArmNativePlatform

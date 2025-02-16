@@ -2,6 +2,9 @@ import kotlinx.io.files.Path
 
 object WindowsNativePlatform : NativePlatform {
     override val targetName: String = "windowsserver"
+    override fun run() {
+        TODO("Not yet implemented")
+    }
 }
 
 actual fun NativePlatform.Companion.get(): NativePlatform = WindowsNativePlatform

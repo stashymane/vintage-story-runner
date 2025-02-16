@@ -15,4 +15,6 @@ fun main() = runBlocking {
         latestVersion != desiredVersion -> logger.info { "A newer version is available ($latestVersion)" }
         installedVersion == desiredVersion -> logger.info { "Files are up-to-date." }
     }
+
+    NativePlatform.get().run()
 }
