@@ -13,6 +13,9 @@ jobs:
   bootstrapper:
     name: Bootstrapper binaries
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./bootstrapper
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,7 +35,6 @@ jobs:
         run: chmod +x ./bootstrapper/gradlew
 
       - name: Build with Gradle
-        working-directory: ./bootstrapper
         run: ./gradlew linkReleaseExecutableLinuxArm64 linkReleaseExecutableLinuxX64
 
   package:
