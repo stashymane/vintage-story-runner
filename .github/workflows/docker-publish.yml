@@ -32,7 +32,7 @@ jobs:
           cache-disabled: true
 
       - name: Fix Gradle permissions
-        run: chmod +x ./bootstrapper/gradlew
+        run: chmod +x ./gradlew
 
       - name: Build with Gradle
         run: ./gradlew linkReleaseExecutableLinuxArm64 linkReleaseExecutableLinuxX64
