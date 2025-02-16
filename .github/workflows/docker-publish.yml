@@ -57,17 +57,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download File
-        uses: actions/download-artifact@v4
-        with:
-          name: bootstrapper
-          path: ./bootstrapper/build/bin/
-
-      - name: test
-        run: |
-          ls -la ./ \
-          ls -la ./bootstrapper/build/bin/ \
-
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
@@ -94,10 +83,17 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
+      - name: Download bootstrapper artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: bootstrapper
+          path: ./bootstrapper/build/bin/
+
       - name: Build & push images
         uses: docker/bake-action@v6
         with:
           push: true
+          source: "."
           files: |
             docker-bake.hcl
             cwd://${{ steps.meta.outputs.bake-file }}
