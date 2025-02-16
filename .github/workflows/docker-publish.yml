@@ -7,7 +7,7 @@ on:
     tags: [ "v*.*.*" ]
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  IMAGE_NAME: stashymane/vintage-story-runner
 
 jobs:
   bootstrapper:
@@ -63,6 +63,7 @@ jobs:
         with:
           images: |
             ${{ env.IMAGE_NAME }}
+            ghcr.io/${{ github.repository }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
