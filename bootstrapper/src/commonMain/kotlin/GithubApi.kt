@@ -4,6 +4,7 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.coroutines.delay
 import kotlinx.datetime.*
+import kotlin.time.Duration.Companion.seconds
 
 suspend fun fetchArmRelease(version: String? = null): GitHub.Release {
     val response = httpClient.get("https://api.github.com/repos/${config.armRepo}/releases") {
@@ -12,14 +13,16 @@ suspend fun fetchArmRelease(version: String? = null): GitHub.Release {
     }
 
     if (response.status.value == 403 || response.status.value == 429) {
-        val reset = response.headers["x-ratelimit-reset"]?.let { Instant.fromEpochSeconds(it.toLong()) }
-            ?: throw RuntimeException("GitHub API rate limit reached, please try again later")
+        val reset =
+            response.headers["x-ratelimit-reset"]?.let { Instant.fromEpochSeconds(it.toLong()) }?.plus(1.seconds)
+                ?: throw RuntimeException("GitHub API rate limit reached, please try again later")
+        val duration = reset - Clock.System.now()
         logger.warn {
-            "GitHub API rate limit reached, waiting until ${
+            "GitHub API rate limit reached, waiting for $duration (${
                 reset.toLocalDateTime(TimeZone.currentSystemDefault()).format(LocalDateTime.Formats.ISO)
-            }..."
+            })..."
         }
-        delay(reset - Clock.System.now())
+        delay(duration)
         return fetchArmRelease(version)
     }
 
