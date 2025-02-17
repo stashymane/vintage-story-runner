@@ -30,6 +30,7 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.coroutines)
             implementation(libs.kotlinx.io)
+            implementation(libs.kotlinx.datetime)
             implementation(libs.bundles.ktor)
             implementation(libs.kotlin.logging)
         }
